@@ -19,7 +19,22 @@ pipeline {
                 git bisect start
                 git bisect bad $BAD_COMMIT
                 git bisect good $GOOD_COMMIT
-                git bisect run mvn clean test
+                
+                while true; do
+                  commit=$(git bisect next)
+                  if [ "$commit" == "" ]; then
+                    echo "Bisect finished."
+                    echo "The first bad commit is: $commit"
+                    break
+                  fi
+
+                  
+                  if mvn clean test | grep -q "BUILD FAILURE"; then
+                    git bisect bad $commit
+                  else
+                    git bisect good $commit
+                  fi
+                done
                 '''
             }
         }
