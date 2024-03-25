@@ -13,6 +13,24 @@ pipeline {
       }
     }
 
+    stage('test') {
+      steps {
+        sh 'mvn test'
+      }
+    }
+
+    stage('verify') {
+      steps {
+        sh 'mvn verify'
+      }
+    }
+
+    stage('clean') {
+      steps {
+        sh 'mvn clean'
+      }
+    }
+
   }
   tools {
     maven '3.9.6'
