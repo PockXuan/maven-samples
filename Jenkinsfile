@@ -7,30 +7,6 @@ pipeline {
       }
     }
 
-    stage('run') {
-      steps {
-        sh 'mvn verify'
-      }
-    }
-
-    stage('test') {
-      steps {
-        sh 'mvn test'
-      }
-    }
-
-    stage('verify') {
-      steps {
-        sh 'mvn verify'
-      }
-    }
-
-    stage('clean') {
-      steps {
-        sh 'mvn clean'
-      }
-    }
-
     stage('Find Bug-Introducing Commit') {
         steps {
             script {
