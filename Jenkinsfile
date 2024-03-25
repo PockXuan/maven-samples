@@ -11,8 +11,8 @@ pipeline {
         steps {
             script {
                 // Initialize environment variables for the known good and bad commits
-                env.GOOD_COMMIT = 'hash_of_good_commit'
-                env.BAD_COMMIT = 'hash_of_bad_commit'
+                env.GOOD_COMMIT = '98ac319c0cff47b4d39a1a7b61b4e195cfa231e5'
+                env.BAD_COMMIT = '198644632661c67b6c32f59e9047c11a70685e15'
 
                 // Bisect process script
                 sh '''
