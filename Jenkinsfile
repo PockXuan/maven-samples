@@ -1,8 +1,36 @@
 pipeline {
   agent any
-  tools { 
-      maven 'DHT_MVN' 
-      jdk 'DHT_SENSE' 
+  stages {
+    stage('checkout') {
+      steps {
+        git(url: 'https://github.com/PockXuan/maven-samples', branch: 'master')
+      }
+    }
+
+    stage('run') {
+      steps {
+        sh 'mvn verify'
+      }
+    }
+
+    stage('test') {
+      steps {
+        sh 'mvn test'
+      }
+    }
+
+    stage('verify') {
+      steps {
+        sh 'mvn verify'
+      }
+    }
+
+    stage('clean') {
+      steps {
+        sh 'mvn clean'
+      }
+    }
+
   }
   stages {
         stage('Find Bug-Introducing Commit') {
