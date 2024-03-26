@@ -24,7 +24,7 @@ pipeline {
                 git bisect bad $BAD_COMMIT
                 git bisect good $GOOD_COMMIT
                 
-                git bisect run 'mvn clean test'
+                git bisect run sh -c 'mvn clean test'
                 '''
             }
         }
