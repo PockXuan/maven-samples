@@ -24,7 +24,7 @@ pipeline {
                 git bisect bad $BAD_COMMIT
                 git bisect good $GOOD_COMMIT
                 
-                git bisect run 'JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_291.jdk/Contents/Home mvn clean test'
+                git bisect run 'mvn clean test'
                 '''
             }
         }
